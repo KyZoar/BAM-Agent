@@ -18,7 +18,7 @@ import jus.aor.mobilagent.kernel._Agent;
  * Le serveur principal permettant le lancement d'un serveur d'agents mobiles et les fonctions permettant de déployer des services et des agents.
  * @author     Morat
  */
-public final class Server {
+public final class Server implements _Server{
 	/** le nom logique du serveur */
 	protected String name;
 	/** le port où sera ataché le service du bus à agents mobiles. Par défaut on prendra le port 10140 */
@@ -41,8 +41,9 @@ public final class Server {
 			/* mise en place du logger pour tracer l'application */
 			loggerName = "jus/aor/mobilagent/"+InetAddress.getLocalHost().getHostName()+"/"+this.name;
 			logger=Logger.getLogger(loggerName);
+			agentServer = new AgentServer(port,name);
 			/* démarrage du server d'agents mobiles attaché à cette machine */
-			agentServer.run();
+			new Thread(agentServer).start();
 			/* temporisation de mise en place du server d'agents */
 			Thread.sleep(1000);
 		}catch(Exception ex){
@@ -60,7 +61,7 @@ public final class Server {
 	public final void addService(String name, String classeName, String codeBase, Object... args) {
 		try {
 			//A COMPLETER
-			agentServer.addService(name, new _Service<className>, );
+			agentServer.addService(name, _Service<className>);
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
@@ -91,5 +92,10 @@ public final class Server {
 	 */
 	protected void startAgent(_Agent agent, BAMAgentClassLoader loader) throws Exception {
 		//A COMPLETER
+	}
+	@Override
+	public void deployAgent(String className, Object[] args, List<ServiceDescriptor> services) {
+		// TODO Auto-generated method stub
+		
 	}
 }
