@@ -1,17 +1,20 @@
 package jus.aor.mobilagent.kernel;
 
+import java.net.URI;
 import java.util.List;
 
 import com.sun.xml.internal.ws.api.wsdl.parser.ServiceDescriptor;
 
-public class Agent implements _Agent {
+public abstract class Agent implements _Agent {
 
 	protected AgentServer agsserv;
 	protected Route route;
 	public String servname;
+	
+	public Agent() {}
 
 	@Override
-	public void run() {
+	public final void run() {
 		// TODO Auto-generated method stub
 
 	}
@@ -31,19 +34,27 @@ public class Agent implements _Agent {
 	}
 
 	@Override
-	public void addEtape(Etape etape) {
+	public final void addEtape(Etape etape) {
 		// TODO Auto-generated method stub
 		route.add(etape);
 	}
-
-	@Override
-	public void init(List<ServiceDescriptor> services) {
-		// TODO Auto-generated method stub
-		
+	
+	protected abstract _Action retour();
+	
+	protected _Service<?> getService(String servicename) {
+		return null;
 	}
+	
+	private void move() {}
+	
+	protected void move(URI uri) {}
 	
 	public String route() {
 		return route.toString();
+	}
+	
+	public final String toString() {
+		return null;
 	}
 
 }

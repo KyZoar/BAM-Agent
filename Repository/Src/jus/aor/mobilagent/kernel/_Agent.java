@@ -28,9 +28,4 @@ public interface _Agent extends java.io.Serializable, Runnable {
 	 * @param etape l'étape à ajouter
 	 */
 	public void addEtape(Etape etape);
-	/**
-	 * 
-	 * @param services
-	 */
-	public void init(List<ServiceDescriptor> services);
 }
