@@ -4,7 +4,7 @@ import java.net.Socket;
 import java.net.URI;
 
 public class AgentServer implements Runnable {
-	protected _Service monService;
+	protected _Service<?> monService;
 	/** Le port ou sera attache l'agent par defaut on prendra le port 1880*/
 	protected int port = 1880;
 	/** Le nom logique de l'agent*/
@@ -19,6 +19,10 @@ public class AgentServer implements Runnable {
 	
 	public void run(){
 		
+	}
+	
+	public void AddService(String st, _Service<?> se){
+	
 	}
 	
 	private _Agent getAgent(Socket s){
