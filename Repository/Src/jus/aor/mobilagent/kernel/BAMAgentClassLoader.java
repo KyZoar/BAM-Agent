@@ -24,4 +24,9 @@ public class BAMAgentClassLoader extends ClassLoader {
 			mapmap.put(res.getKey(),res.getValue());
 		}
 	}
+
+	public Jar extractCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
