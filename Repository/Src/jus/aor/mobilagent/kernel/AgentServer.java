@@ -2,8 +2,8 @@ package jus.aor.mobilagent.kernel;
 
 import java.net.Socket;
 
-public class AgentServer {
-	protected _Service<T> monService;
+public class AgentServer implements Runnable {
+	protected _Service monService;
 	/** Le port ou sera attache l'agent par defaut on prendra le port 1880*/
 	protected int port = 1880;
 	/** Le nom logique de l'agent*/
@@ -21,6 +21,6 @@ public class AgentServer {
 	}
 	
 	private _Agent getAgent(Socket s){
-		return  
+		return null;
 	}
 }
