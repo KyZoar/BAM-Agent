@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.xml.internal.ws.api.wsdl.parser.ServiceDescriptor;
+
 import jus.aor.mobilagent.kernel.BAMAgentClassLoader;
 import jus.aor.mobilagent.kernel._Agent;
 
@@ -94,7 +96,8 @@ public final class Server implements _Server{
 		//A COMPLETER
 	}
 	@Override
-	public void deployAgent(String className, Object[] args, List<ServiceDescriptor> services) {
+	public void deployAgent(String className, Object[] args,
+			List<ServiceDescriptor> services) {
 		// TODO Auto-generated method stub
 		
 	}
