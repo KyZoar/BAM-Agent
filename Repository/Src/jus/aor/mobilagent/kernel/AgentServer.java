@@ -1,6 +1,7 @@
 package jus.aor.mobilagent.kernel;
 
 import java.net.Socket;
+import java.net.URI;
 
 public class AgentServer implements Runnable {
 	protected _Service monService;
@@ -21,6 +22,14 @@ public class AgentServer implements Runnable {
 	}
 	
 	private _Agent getAgent(Socket s){
+		return null;
+	}
+	
+	public String toString(){
+		return null;
+	}
+	
+	public URI site(){
 		return null;
 	}
 }
