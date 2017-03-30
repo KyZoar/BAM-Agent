@@ -182,5 +182,9 @@ public class Starter{
 		if(System.getSecurityManager() == null)System.setSecurityManager(new RMISecurityManager());
 		new Starter(args);
 	}
+	
+	public Logger getLogger() {
+		return this.logger;
+	}
 }
 
