@@ -60,8 +60,14 @@ public final class Server implements _Server{
 	 */
 	public final void addService(String name, String classeName, String codeBase, Object... args) {
 		try {
-			//A COMPLETER
-			agentServer.addService(name, _Service<className>);
+			
+			BAMServerClassLoader agentServerLoader = new BAMServerClassLoader(new URL[]{},this.getClass().getClassLoader());
+			agentServerLoader.addUrl(new URL(codeBase));
+			Class<?> classe = (Class<?>)Class.forName(classeName,true,this.getClass().getClassLoader());
+			_Service<?> service = (_Service<?>)classe.getConstructor(Object[].class).newInstance(new Object[]{args});
+			agentServer.AddService(name, service);
+			
+
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
@@ -91,6 +97,18 @@ public final class Server implements _Server{
 	 * @throws Exception
 	 */
 	protected void startAgent(_Agent agent, BAMAgentClassLoader loader) throws Exception {
-		//A COMPLETER
+		((Agent)agent).move(agentServer.site());
+		loader.loadClass(this.getClass().getName());
+	}
+	
+	
+	@Override
+	public void deployAgent(String className, Object[] args,
+			List<ServiceDescriptor> services) {
+		
+	}
+	
+	public String toString(){
+		return loggerName;
 	}
 }
