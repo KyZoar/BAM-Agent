@@ -93,8 +93,10 @@ public final class Server implements _Server{
 	 * @throws Exception
 	 */
 	protected void startAgent(_Agent agent, BAMAgentClassLoader loader) throws Exception {
-		agent.move(loader.getResource(this.name));
+		((Agent)agent).move(agentServer.site());
 	}
+	
+	
 	@Override
 	public void deployAgent(String className, Object[] args,
 			List<ServiceDescriptor> services) {
