@@ -1,6 +1,9 @@
 package jus.aor.mobilagent.kernel;
 
 import java.net.UnknownHostException;
+import java.util.List;
+
+import com.sun.xml.internal.ws.api.wsdl.parser.ServiceDescriptor;
 
 /**
  * Description d'un agent du modèle de bus à agents mobiles "BAM". Le constructeur d'un agent devra avoir la signature suivante : <bold>public XXXX(Object...)</bold>

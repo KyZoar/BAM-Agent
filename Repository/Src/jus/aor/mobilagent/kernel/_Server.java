@@ -5,6 +5,8 @@ package jus.aor.mobilagent.kernel;
 
 import java.util.List;
 
+import com.sun.xml.internal.ws.api.wsdl.parser.ServiceDescriptor;
+
 /**
  * @author morat 
  */
