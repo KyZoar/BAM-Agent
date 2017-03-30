@@ -51,6 +51,6 @@ public class BAMServerClassLoader extends URLClassLoader{
 	
 	
 	public String ToString(){
-		return null;
+		return tabVal.toString();
 	}
 }
