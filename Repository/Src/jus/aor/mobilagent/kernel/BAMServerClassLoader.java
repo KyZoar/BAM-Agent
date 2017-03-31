@@ -10,18 +10,15 @@ import java.util.jar.JarException;
 public class BAMServerClassLoader extends URLClassLoader{
 
 	private Jar jar;
-	
-	
-	public Jar getJar() {
-		return jar;
-	}
-
-
-
 	Map<String, byte[]> tabVal = new HashMap<String, byte[]>();
+	
 	
 	public BAMServerClassLoader(URL[] u,ClassLoader cl){
 		super(u,cl);
+	}	
+	
+	public Jar getJar() {
+		return jar;
 	}
 	
 	public void addUrl(URL u){
@@ -37,8 +34,6 @@ public class BAMServerClassLoader extends URLClassLoader{
 				tabVal.put(name, T);
 			}
 			
-			
-			
 		} catch (JarException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,8 +43,7 @@ public class BAMServerClassLoader extends URLClassLoader{
 		}
 		
 	}
-	
-	
+		
 	public String ToString(){
 		return tabVal.toString();
 	}
