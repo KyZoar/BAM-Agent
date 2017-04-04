@@ -3,6 +3,7 @@
  */
 package jus.aor.mobilagent.kernel;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.net.InetAddress;
 import java.net.URI;
@@ -10,6 +11,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sun.management.resources.agent;
 
 import com.sun.xml.internal.ws.api.wsdl.parser.ServiceDescriptor;
 
@@ -86,6 +89,24 @@ public final class Server implements _Server{
 	public final void deployAgent(String classeName, Object[] args, String codeBase, List<String> etapeAddress, List<String> etapeAction) {
 		try {
 			//A COMPLETER en terme de startAgent
+			BAMAgentClassLoader agent = new BAMAgentClassLoader(this.getClass().getClassLoader());
+			agent.integrateCode(new Jar(codeBase));
+			Class<?> classe = (Class<?>)Class.forName(classeName,true,agent);
+			Constructor<?> constructor = classe.getConstructor(Object[].class);
+			Agent nouvelAgent = (Agent)constructor.newInstance(new Object[]{args});
+			nouvelAgent.init(agentServer, name);
+			
+			nouvelAgent.addEtape(new Etape(agentServer.site(),new _Action(){
+				
+				@Override
+				public void execute() {
+					
+				}
+			}));
+			
+			
+			
+			
 		}catch(Exception ex){
 			logger.log(Level.FINE," erreur durant le lancement du serveur"+this,ex);
 			return;
