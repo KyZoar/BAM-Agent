@@ -49,12 +49,12 @@ public abstract class Agent implements _Agent {
 	}
 
 	private void move() {
-		this.move(this.route.get().server);
+		this.move(route.get().server);
 	}
 
 	protected void move(URI uri) {
 		Starter.getLogger().log(Level.FINE,
-				String.format("Agent %s moving to %s:%d ", this, uri.getHost(), uri.getPort()));
+				String.format("L'agent %s se dirige vers %s:%d ", this, uri.getHost(), uri.getPort()));
 
 		try {
 			Socket socket = new Socket(uri.getHost(), uri.getPort());
