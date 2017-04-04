@@ -133,9 +133,6 @@ public class LookForHotel{
 		LookForHotel lfh;
 		if(args==null){
 			String[] s=new String[3];
-			/*s[0]="3333";
-			s[1]="chaine";
-			s[2]="2";*/
 			s[0]="Paris";
 			lfh=new LookForHotel(s);
 		}

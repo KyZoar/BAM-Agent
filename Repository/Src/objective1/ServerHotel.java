@@ -50,7 +50,7 @@ public class ServerHotel {
 
 			if(nomService.equals("chaine")){
 				String nomGenerique = "Hotels" + numService;
-				_Chaine nomChaine = new Chaine("DataStore/"+nomGenerique+".xml");
+				_Chaine nomChaine = new Chaine("Repository/DataStore/"+nomGenerique+".xml");
 				registry.bind(nomGenerique, (Remote) nomChaine);
 				System.out.println("Enregristrement sur le server reussi");
 			}else if(nomService.equals("annuaire")){
