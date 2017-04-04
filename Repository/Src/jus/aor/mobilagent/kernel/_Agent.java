@@ -1,5 +1,6 @@
 package jus.aor.mobilagent.kernel;
 
+import java.net.URI;
 import java.net.UnknownHostException;
 import java.util.List;
 
