@@ -14,14 +14,25 @@ public class ServerHotel {
 		String nomService = "null";
 		int numService = 1;
 		Registry registry = null;
-
-		if(args.length != 3){
+		
+		String[] s;
+		
+		if(args.length !=3 ){
+			s= new String[3];
+			s[0]="3333";
+			s[1]="chaine";
+			s[2]="2";
+		}
+		else{
+			s=args;
+		}
+		if(args.length != 3 && false){
 			System.out.println("Arguments de la forme <Port> <Service> <Numero>");
 			System.exit(1);
 		}else{
-			port = Integer.parseInt(args[0]);
-			nomService = args[1];
-			numService = Integer.parseInt(args[2]);
+			port = Integer.parseInt(s[0]);
+			nomService = s[1];
+			numService = Integer.parseInt(s[2]);
 			//System.out.println("Port " + port + ", Service " + nomService + " et Numero " + numService +  " selectionne");
 		}
 

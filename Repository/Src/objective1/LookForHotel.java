@@ -130,8 +130,18 @@ public class LookForHotel{
 	}
 	
 	public static void main(String[] args){
-		LookForHotel lfher= new LookForHotel(args);
-		lfher.call();	
+		LookForHotel lfh;
+		if(args==null){
+			String[] s=new String[3];
+			/*s[0]="3333";
+			s[1]="chaine";
+			s[2]="2";*/
+			s[0]="Paris";
+			lfh=new LookForHotel(s);
+		}
+		else lfh= new LookForHotel(args);
+		
+		lfh.call();	
 	}
 
 }
