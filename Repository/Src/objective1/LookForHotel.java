@@ -132,7 +132,7 @@ public class LookForHotel{
 	public static void main(String[] args){
 		LookForHotel lfh;
 		if(args==null){
-			String[] s=new String[3];
+			String[] s=new String[1];
 			s[0]="Paris";
 			lfh=new LookForHotel(s);
 		}

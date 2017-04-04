@@ -18,9 +18,10 @@ public class ServerHotel {
 		String[] s;
 		
 		if(args.length !=3 ){
+			System.out.println("Argument par defaut retablis.");
 			s= new String[3];
 			s[0]="3333";
-			s[1]="chaine";
+			s[1]="Hotel";
 			s[2]="2";
 		}
 		else{
@@ -52,11 +53,11 @@ public class ServerHotel {
 				String nomGenerique = "Hotels" + numService;
 				_Chaine nomChaine = new Chaine("Repository/DataStore/"+nomGenerique+".xml");
 				registry.bind(nomGenerique, (Remote) nomChaine);
-				System.out.println("Enregristrement sur le server reussi");
+				System.out.println("Enregistrement sur le serveur reussi");
 			}else if(nomService.equals("annuaire")){
 				_Annuaire nomAnnuaire = new Annuaire("DataStore/Annuaire.xml");
 				registry.bind("Annuaire", (Remote) nomAnnuaire);
-				System.out.println("Enregristrement sur le server reussi");
+				System.out.println("Enregistrement sur le serveur reussi");
 			}else{
 				System.out.println("Erreur mauvais nom de service...");
 				System.exit(1);
