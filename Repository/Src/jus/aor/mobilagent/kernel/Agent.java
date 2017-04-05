@@ -17,26 +17,23 @@ public abstract class Agent implements _Agent {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected AgentServer agsserv;
+	protected AgentServer agentserver;
 	protected Route route;
-	public String servname;
+	public String name;
 
 	public Agent() {
 	}
 
-	@Override
 	public void init(AgentServer agentServer, String serverName) {
-		this.agsserv = agentServer;
-		this.servname = serverName;
-		this.route = new Route(new Etape(agsserv.site(), _Action.NIHIL));
+		this.agentserver = agentServer;
+		this.name = serverName;
+		this.route = new Route(new Etape(agentserver.site(), _Action.NIHIL));
 	}
 
-	@Override
 	public void reInit(AgentServer server, String serverName) {
 		init(server, serverName);
 	}
 
-	@Override
 	public final void addEtape(Etape etape) {
 		route.add(etape);
 	}
@@ -77,7 +74,6 @@ public abstract class Agent implements _Agent {
 		}
 	}
 
-	@Override
 	public final void run() {
 		Starter.getLogger().log(Level.INFO, String.format("Agent %s starting execution", this));
 

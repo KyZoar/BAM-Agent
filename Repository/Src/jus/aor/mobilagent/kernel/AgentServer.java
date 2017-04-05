@@ -17,12 +17,12 @@ public class AgentServer implements Runnable {
 	protected String name;
 	/** Socket associe a l'agent */
 	protected Socket socket;
-	Map<String,_Service<?>> mesServices;
+	Map<String,_Service<?>> Services;
 	
 	public AgentServer(int port, String name){
 		this.port = port;
 		this.name = name;
-		mesServices = new HashMap<String,_Service<?>>();
+		Services = new HashMap<String,_Service<?>>();
 	}
 	
 	public void run(){
@@ -32,7 +32,7 @@ public class AgentServer implements Runnable {
 			
 			while(true){
 				Socket client = socket.accept();
-				System.out.println("Quelqu'un vient d'arriver :o");
+				System.out.println("Bonjour toi !");
 				_Agent agent = getAgent(client);
 				agent.reInit(this, name);
 				
@@ -49,7 +49,7 @@ public class AgentServer implements Runnable {
 	}
 	
 	public void AddService(String st, _Service<?> se){
-		mesServices.put(st, se);
+		Services.put(st, se);
 	}
 	
 	private _Agent getAgent(Socket s) throws IOException, ClassNotFoundException{
@@ -70,7 +70,7 @@ public class AgentServer implements Runnable {
 	}
 	
 	public String toString(){
-		return name+"\n"+mesServices.toString();
+		return name+"\n"+Services.toString();
 	}
 	
 	public URI site(){

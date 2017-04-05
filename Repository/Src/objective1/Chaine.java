@@ -29,16 +29,13 @@ public class Chaine extends UnicastRemoteObject implements _Chaine {
      try {
          docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
          doc = docBuilder.parse(new File(args[0]));
-
          String name, localisation;
          NodeList list = doc.getElementsByTagName("Hotel");
-         NamedNodeMap attrs;
-        
-         // Boucle principale de lecture
+         NamedNodeMap nm;
          for (int i = 0; i < list.getLength(); i++) {
-             attrs = list.item(i).getAttributes();
-             name = attrs.getNamedItem("name").getNodeValue();
-             localisation = attrs.getNamedItem("localisation").getNodeValue();
+             nm = list.item(i).getAttributes();
+             name = nm.getNamedItem("name").getNodeValue();
+             localisation = nm.getNamedItem("localisation").getNodeValue();
              nosHotels.add(new Hotel(name, localisation));
          }
      } catch (ParserConfigurationException | SAXException | IOException ex) {

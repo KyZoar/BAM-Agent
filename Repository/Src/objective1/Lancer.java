@@ -13,7 +13,7 @@ public class Lancer {
 		Thread t1 =new Thread(){
 			public void run() {
 				servArgu[0] = "2222";
-				servArgu[1] = "annuaire";
+				servArgu[1] = "chaine";
 				servArgu[2] = "1";
 				serv1.main(servArgu);
 			}
@@ -22,7 +22,7 @@ public class Lancer {
 		Thread t2 = new Thread(){
 			public void run(){
 				servArgu[0] = "3333";
-				servArgu[1] = "annuaire";
+				servArgu[1] = "chaine";
 				servArgu[2] = "2";
 				serv2.main(servArgu);
 			}
@@ -31,7 +31,7 @@ public class Lancer {
 		Thread t3 = new Thread(){
 			public void run(){
 				servArgu[0] = "4444";
-				servArgu[1] = "annuaire";
+				servArgu[1] = "chaine";
 				servArgu[2] = "3";
 				serv3.main(servArgu);
 			}

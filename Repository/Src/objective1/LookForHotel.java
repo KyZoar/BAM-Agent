@@ -88,13 +88,13 @@ public class LookForHotel{
 	public long call() {
 		long timer = System.currentTimeMillis();
 		try{
-			logger.log(Level.INFO, "Demarrage de la recherche");
+			logger.log(Level.INFO, "Recuperation des hotels");
 
 			List<_Chaine> listeChaine = new ArrayList<_Chaine>();
 			
-			listeChaine.add((_Chaine) regS1.lookup("Hotels1"));
-			listeChaine.add((_Chaine) regS2.lookup("Hotels2"));
-			listeChaine.add((_Chaine) regS3.lookup("Hotels3"));
+			listeChaine.add((Chaine) regS1.lookup("Hotels1"));
+			listeChaine.add((Chaine) regS2.lookup("Hotels2"));
+			listeChaine.add((Chaine) regS3.lookup("Hotels3"));
 
 
 			for(int i = 0; i < listeChaine.size(); i++){
@@ -103,7 +103,7 @@ public class LookForHotel{
 				listHotel.addAll(temps);
 			}
 			
-			logger.log(Level.INFO, "Fin de la recherche parmis les chaines");
+			logger.log(Level.INFO, "Fin de la recherche");
 			
 			_Annuaire annuaire = (_Annuaire) regS4.lookup("Annuaire");
 
@@ -111,7 +111,7 @@ public class LookForHotel{
 				listNumero.put(h.name, annuaire.get(h.name));
 			}
 			
-			logger.log(Level.INFO, "Fin de la recherche parmis les annuaires");
+			logger.log(Level.INFO, "Annuaires OK");
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class LookForHotel{
 			logger.log(Level.INFO, "resultat : Hotel " + h.name + ", numero " + listNumero.get(h.name));
 		}
 		long t=System.currentTimeMillis()-timer;
-		logger.log(Level.INFO, "Requete executee en " + t  + " ms");
+		logger.log(Level.INFO, "Requete execute en " + t  + " ms");
 
 		
 		return (t);
@@ -132,6 +132,7 @@ public class LookForHotel{
 	public static void main(String[] args){
 		LookForHotel lfh;
 		if(args==null){
+			// on gére le cas sans argument pour faciliter le lancement
 			String[] s=new String[1];
 			s[0]="Paris";
 			lfh=new LookForHotel(s);

@@ -28,13 +28,13 @@ public class ServerHotel {
 			s=args;
 		}
 		if(args.length != 3 && false){
-			System.out.println("Arguments de la forme <Port> <Service> <Numero>");
+			//Mis a faux car on gére le cas sans argument
+			System.out.println("Arguments de la forme Port Service Numero");
 			System.exit(1);
 		}else{
 			port = Integer.parseInt(s[0]);
 			nomService = s[1];
 			numService = Integer.parseInt(s[2]);
-			//System.out.println("Port " + port + ", Service " + nomService + " et Numero " + numService +  " selectionne");
 		}
 
 		if(System.getSecurityManager()==null){
@@ -44,7 +44,7 @@ public class ServerHotel {
 		try{
 			registry=LocateRegistry.createRegistry(port);
 		}catch(RemoteException e){
-			System.out.println("registry problem : " + e);
+			System.out.println("Probleme sur le registre : " + e);
 		}
 
 		try{
@@ -53,13 +53,13 @@ public class ServerHotel {
 				String nomGenerique = "Hotels" + numService;
 				_Chaine nomChaine = new Chaine("Repository/DataStore/"+nomGenerique+".xml");
 				registry.bind(nomGenerique, (Remote) nomChaine);
-				System.out.println("Enregistrement sur le serveur reussi");
+				System.out.println("Enregistrement sur le serveur reussi (chaine)");
 			}else if(nomService.equals("annuaire")){
 				_Annuaire nomAnnuaire = new Annuaire("DataStore/Annuaire.xml");
 				registry.bind("Annuaire", (Remote) nomAnnuaire);
-				System.out.println("Enregistrement sur le serveur reussi");
+				System.out.println("Enregistrement sur le serveur reussi (annuaire)");
 			}else{
-				System.out.println("Erreur mauvais nom de service...");
+				System.out.println("mauvais nom de service...");
 				System.exit(1);
 			}
 		}catch(Exception e){

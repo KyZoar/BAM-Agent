@@ -43,7 +43,7 @@ public class Hello extends Agent{
 		private static final long serialVersionUID = 1L;
 
 		public void execute(){
-			Starter.getLogger().log(Level.INFO, "Passage de HELLO");
+			Starter.getLogger().log(Level.INFO, "Envoie de HELLO");
 		}
 	};
 	/* (non-Javadoc)
